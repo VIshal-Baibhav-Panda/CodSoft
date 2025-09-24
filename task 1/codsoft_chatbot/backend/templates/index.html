@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodSoft.Bot — Demo</title>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css?v=7" />
+</head>
+<body>
+  <!-- redirect to login if no user stored locally -->
+  <script>
+    try {
+      const u = localStorage.getItem('codsoft_user');
+      if (!u && !location.pathname.startsWith('/login')) { location.href = '/login'; }
+      else if (u) { window.CODSOFT_USER = JSON.parse(u); }
+    } catch(e){
+      if (!location.pathname.startsWith('/login')) location.href = '/login';
+    }
+  </script>
+
+  <main class="page">
+    <div class="layout">
+      <!-- left panel -->
+      <aside class="left-panel" aria-label="sidebar">
+        <div>
+          <div class="brand">
+            <div class="logo">CodSoft<span class="dot">.</span>Bot</div>
+            <div class="subtitle">• AI-powered Chatbot <br>• Rule-based</div>
+          </div>
+
+          <nav class="menu" role="navigation" aria-label="main menu">
+            <button class="menu-btn active" id="menuChat" type="button">Chat</button>
+          </nav>
+        </div>
+
+        <div class="footer-note">
+          <small>CodSoft AI Internship Project</small>
+        </div>
+      </aside>
+
+      <!-- chat area -->
+      <section class="chat-area" aria-label="chat area">
+        <header class="chat-header">
+          <div>
+            <div class="title">CodSoft.Bot</div>
+            <div class="status">Status: Online • Chatbot Active</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px">
+            <div id="userName" style="font-weight:600;color:#9fb4d9"></div>
+            <button id="btnLogout" class="header-btn">Sign Out</button>
+            <button id="btnExport" class="header-btn">Download Chat</button>
+            <button id="btnClear" class="header-btn">Clear History</button>
+          </div>
+        </header>
+
+        <!-- chat-card -->
+        <main class="chat-card" role="main">
+          <div id="chatWindow" class="chat-window" aria-live="polite" tabindex="0">
+            <!-- centered welcome (shows when no messages) -->
+            <div id="welcomeCenter" class="welcome-center" aria-hidden="false">
+              <h2 id="welcomeTitle">What's on your mind today?</h2>
+              <p id="welcomeSub">Ask anything — try: 'hi' or 'my name is ...'</p>
+
+              <div class="welcome-input-row">
+                <input id="welcomeInput" placeholder="Ask anything" />
+                <button id="welcomeSend" class="send-btn">Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- input pinned -->
+          <div class="input-row">
+            <textarea id="txtMessage" rows="1" placeholder="Ask anything — try: 'hi' or 'my name is ...'"></textarea>
+            <button id="btnSend" class="send-btn">Send</button>
+          </div>
+        </main>
+
+        <footer class="chat-footer">
+          <div class="muted">CodSoft Bot v1.0 • Rule-based NLP Chat Assistant</div>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js?v=7"></script>
+  <script>
+    // show username + logout handler
+    (function(){
+      const u = window.CODSOFT_USER || (localStorage.getItem('codsoft_user') ? JSON.parse(localStorage.getItem('codsoft_user')) : null);
+      const nameEl = document.getElementById('userName');
+      if (nameEl && u && u.name) nameEl.textContent = u.name;
+      const logoutBtn = document.getElementById('btnLogout');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', ()=>{
+          if (confirm('Log out and return to login?')) {
+            localStorage.removeItem('codsoft_user');
+            location.href = '/login';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+{
+  "intents": [
+    {
+      "name": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening", "yo", "hiya"],
+      "responses": ["Hey there! 👋 How can I help you today?", "Hello! What would you like to do?", "Hi — I'm here to help. Ask me anything!"]
+    },
+    {
+      "name": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "see ya", "talk later", "farewell"],
+      "responses": ["Goodbye! Have a great day 😊", "See you later — good luck with your internship!", "Take care — ping me if you need more help."]
+    },
+    {
+      "name": "thanks",
+      "patterns": ["thanks", "thank you", "thx", "ty", "cheers"],
+      "responses": ["You're welcome!", "Anytime — happy to help!", "Glad I could help!"]
+    },
+    {
+      "name": "set_name",
+      "patterns": ["my name is (.*)", "i am (.*)", "call me (.*)"],
+      "responses": ["Nice to meet you, {name}!", "Got it — I'll remember that you're {name}."]
+    },
+    {
+      "name": "ask_name",
+      "patterns": ["what is your name", "who are you", "your name", "who am i talking to"],
+      "responses": ["I'm CodSoft.Bot — a rule-based internship demo chatbot.", "You can call me CodSoft.Bot — I help with project and dev questions."]
+    },
+    {
+      "name": "project_help",
+      "patterns": ["i need help with project", "help with project", "project idea", "project suggestions", "internship project"],
+      "responses": ["Tell me your project goals and I can propose a plan, sample code, or a checklist.", "I can suggest steps, milestones and sample code. What is your project topic or stack?"]
+    },
+    {
+      "name": "submit_internship",
+      "patterns": ["how to submit internship", "submit internship", "internship submission", "where to submit my internship"],
+      "responses": ["To submit: 1) Prepare report and code, 2) Bundle required files (zip), 3) Upload to the portal or send to the supervisor. Would you like a checklist?"]
+    },
+    {
+      "name": "ask_remember_name",
+      "patterns": ["do you remember my name", "what is my name", "who am i"],
+      "responses": ["I remember you as {name}." , "You told me your name is {name}."] 
+    },
+    {
+      "name": "fallback",
+      "patterns": [],
+      "responses": ["I didn't quite catch that. Could you try rephrasing?", "Hm, I don't know that yet — try asking differently or type 'help'."]
+    },
+    {
+      "name": "smalltalk_how_are_you",
+      "patterns": ["how are you", "how's it going", "how are you doing"],
+      "responses": ["I'm a bot — always ready to help! How can I assist you today?", "Doing great — ready to help with your internship tasks."]
+    },
+    {
+      "name": "time_date",
+      "patterns": ["what time is it", "what's the time", "what date is it", "today's date"],
+      "responses": ["I can't access your system clock from here, but your device should show the current time. (Try `date` in a terminal.)", "Check your system clock — I can't read local time from this demo server."]
+    },
+    {
+      "name": "linux_commands",
+      "patterns": ["how to list files", "ls command", "how to change directory", "cd command", "remove file command", "rm command"],
+      "responses": ["`ls` lists files, `cd <dir>` changes directory, `rm <file>` removes a file (careful!). Need examples for your terminal?"]
+    },
+    {
+      "name": "python_basics",
+      "patterns": ["how to write python", "python list comprehension", "how to define function in python", "python tutorial"],
+      "responses": ["A function in Python: `def hello(name): return f\"Hello {name}\"`. For more, try an online Python tutorial or ask for examples."]
+    },
+    {
+      "name": "flask_help",
+      "patterns": ["flask tutorial", "how to create flask api", "flask app", "how to run flask"],
+      "responses": ["To make a Flask app: `from flask import Flask; app = Flask(__name__)` then define routes with `@app.route` and run `app.run()`. Need a sample file?"]
+    },
+    {
+      "name": "html_css",
+      "patterns": ["how to center div", "css center", "html css tutorial", "styling buttons css"],
+      "responses": ["To center a div: `.container{display:flex;justify-content:center;align-items:center;}`. For buttons, use `border-radius`, `padding` and `box-shadow`."]
+    },
+    {
+      "name": "javascript_questions",
+      "patterns": ["how to add event listener", "js event listener", "javascript fetch example", "how to call api from js"],
+      "responses": ["`element.addEventListener('click', () => {...})`. Use `fetch('/api/chat', {method:'POST', body:JSON.stringify({message})})` to call APIs from JS."]
+    },
+    {
+      "name": "git_commands",
+      "patterns": ["how to commit", "git commit", "git push", "git clone", "git branch"],
+      "responses": ["Common git flow: `git clone`, `git checkout -b feature`, `git add .`, `git commit -m \"msg\"`, `git push origin feature`. Need help with a conflict?"]
+    },
+    {
+      "name": "docker_basics",
+      "patterns": ["dockerfile example", "how to dockerize flask", "docker compose", "docker container"],
+      "responses": ["A simple Dockerfile for Flask: `FROM python:3.10-slim; COPY . /app; RUN pip install -r requirements.txt; CMD [\"python\",\"app.py\"]`. Use docker-compose to run multi-service stacks."]
+    },
+    {
+      "name": "sql_query",
+      "patterns": ["select query", "join in sql", "how to create table", "sql example"],
+      "responses": ["Basic SQL: `SELECT col FROM table WHERE condition;`. Joins: `SELECT * FROM a JOIN b ON a.id=b.a_id;`. Tell me your DB and I can give examples."]
+    },
+    {
+      "name": "testing_unittest",
+      "patterns": ["python testing", "unittest example", "pytest example", "how to write tests"],
+      "responses": ["Use `pytest` or `unittest`. Example: `def test_sum(): assert sum([1,2])==3`. Run `pytest` to execute tests. Want a sample test suite?"]
+    },
+    {
+      "name": "algorithms_help",
+      "patterns": ["sorting algorithms", "how quicksort works", "big o notation", "time complexity"],
+      "responses": ["Quicksort average O(n log n). Bubble sort is O(n^2). Ask for pseudocode or an implemented example in Python if you want."]
+    },
+    {
+      "name": "data_structures",
+      "patterns": ["what is linked list", "stack vs queue", "implement stack in python"],
+      "responses": ["A stack is LIFO (push/pop). A queue is FIFO. Linked list stores nodes with `next` pointers. Want implementation examples?"]
+    },
+    {
+      "name": "ml_basics",
+      "patterns": ["machine learning basics", "what is supervised learning", "train test split", "how to start with ml"],
+      "responses": ["Start with supervised learning (classification/regression). Use scikit-learn for small experiments: `train_test_split`, `fit`, `predict`."]
+    },
+    {
+      "name": "nlp_basics",
+      "patterns": ["what is nlp", "text preprocessing", "tokenization", "stemming vs lemmatization"],
+      "responses": ["NLP stands for natural language processing. Preprocessing includes tokenization, stopword removal, lemmatization/stemming. Want a pipeline example?"]
+    },
+    {
+      "name": "api_design",
+      "patterns": ["rest api best practices", "api design", "http status codes", "json response"],
+      "responses": ["Use clear endpoints, proper HTTP verbs, and status codes (200, 201, 400, 404, 500). Return JSON with an envelope like `{success:true,data:...}`. Need an example?"]
+    },
+    {
+      "name": "security_basic",
+      "patterns": ["how to secure api", "api authentication", "jwt example", "secure flask"],
+      "responses": ["Use HTTPS, validate inputs, and authenticate requests (JWT or sessions). For Flask, use `flask-jwt-extended` or OAuth for more advanced needs."]
+    },
+    {
+      "name": "logging_debug",
+      "patterns": ["how to debug", "logging in python", "print debug", "traceback error"],
+      "responses": ["Use `logging` instead of prints: `import logging; logging.basicConfig(level=logging.DEBUG)`. Read tracebacks — they show file/line numbers where exceptions happen."]
+    },
+    {
+      "name": "performance_tips",
+      "patterns": ["speed up python", "optimize code", "improve performance"],
+      "responses": ["Profile with `cProfile`, optimize hotspots, use vectorized operations (NumPy) for heavy numeric work, and avoid repeated expensive operations in loops."]
+    },
+    {
+      "name": "docker_compose_example",
+      "patterns": ["docker compose file", "docker-compose.yml example", "compose up"],
+      "responses": ["A minimal `docker-compose.yml` includes services, build context, and ports. Example: `services: backend: build: ./backend ports: - '5000:5000'`."]
+    },
+    {
+      "name": "ci_cd",
+      "patterns": ["ci cd pipeline", "github actions example", "how to setup ci"],
+      "responses": ["Use GitHub Actions or GitLab CI. Basic pipeline runs tests and builds image. I can generate a basic `workflow.yml` for you."]
+    },
+    {
+      "name": "resume_tips",
+      "patterns": ["how to write resume", "resume tips", "internship resume", "cv tips"],
+      "responses": ["Keep it concise, list technical skills, projects with clear outcomes, and links to GitHub or live demos. Want a resume checklist?"]
+    },
+    {
+      "name": "interview_prep",
+      "patterns": ["interview questions", "prepare for interview", "coding interview tips", "system design basics"],
+      "responses": ["Practice algorithm problems (LeetCode), rehearse system design basics, and prepare stories for behavioral rounds. Need a 30-day study plan?"]
+    },
+    {
+      "name": "study_plan",
+      "patterns": ["study plan", "how to prepare in 1 month", "learning path for ml", "learning path for web dev"],
+      "responses": ["Break tasks into weekly milestones, focus on fundamentals first, build small projects, and review daily. Tell me your target and timeframe and I can propose a plan."]
+    },
+    {
+      "name": "time_management",
+      "patterns": ["how to manage time", "study schedule", "productivity tips"],
+      "responses": ["Use Pomodoro (25/5), set clear daily goals, and avoid multitasking. Prioritize important tasks (Eisenhower matrix)."]
+    },
+    {
+      "name": "export_clear_commands",
+      "patterns": ["export chat", "clear chat", "delete history", "clear conversation"],
+      "responses": ["Use the Export button to download conversation, and Clear to reset local chat. Note: backend transcript is stored in `chat_transcript.log`."]
+    },
+    {
+      "name": "explain_code",
+      "patterns": ["explain this code", "what does this function do", "explain snippet", "help me understand code"],
+      "responses": ["Paste the code snippet and I will summarize what it does, step-by-step, and point out potential issues or improvements."]
+    },
+    {
+      "name": "common_errors",
+      "patterns": ["memory error", "segfault", "typeerror", "indexerror", "keyerror", "attributeerror"],
+      "responses": ["Common Python errors: `IndexError` = out-of-range list access, `KeyError` = missing dict key, `TypeError` = wrong type used. Paste the traceback and I can help debug."]
+    },
+    {
+      "name": "help_commands",
+      "patterns": ["help", "commands", "what can you do", "capabilities"],
+      "responses": ["I respond to many predefined commands: project help, coding questions, deployment, and general internship tips. Ask me about a topic or type 'list intents' to see categories."]
+    },
+    {
+      "name": "list_intents",
+      "patterns": ["list intents", "what intents do you have", "show commands"],
+      "responses": ["I support greetings, project help, web dev, Python, Flask, Docker, SQL, testing, interview prep and more. Ask specifically and I'll help."]
+    },
+    {
+      "name": "contact_support",
+      "patterns": ["contact", "support", "mentor contact", "supervisor email"],
+      "responses": ["I don't have direct contact details. For supervisor or mentor information, check your internship portal or ask your coordinator. I can help draft an email."]
+    },
+    {
+      "name": "draft_email",
+      "patterns": ["draft email", "write email to mentor", "compose email"],
+      "responses": ["Tell me the purpose and recipient and I will draft a professional email for you (e.g., submit project, ask for extension, schedule meeting)."]
+    },
+    {
+      "name": "thank_you_and_feedback",
+      "patterns": ["i appreciate it", "good job", "nice", "well done"],
+      "responses": ["Thanks! Happy to help — your feedback makes this demo better. Want to add a new intent or tweak responses?"]
+    },
+    {
+      "name": "good_practices",
+      "patterns": ["code quality", "best practices", "clean code", "documentation"],
+      "responses": ["Write clear functions, add docstrings, keep functions small, and add tests. Document setup steps in README and include run instructions."]
+    },
+    {
+      "name": "version_control_best_practices",
+      "patterns": ["git best practices", "commit message style", "branching strategy", "git workflow"],
+      "responses": ["Use small commits with clear messages, feature branches, pull requests, and code reviews. Use `main`/`develop` or trunk-based strategies depending on team size."]
+    }
+  ],
+  "settings": {
+    "fuzzy_threshold": 0.62,
+    "log_file": "chat_transcript.log"
+  }
+}

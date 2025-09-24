@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in - CodSoft.Bot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css?v=login" />
+  <style>
+    body{ display:flex; align-items:center; justify-content:center; height:100vh; background:linear-gradient(180deg,#031029,#071033); }
+    .login-card{
+      width:420px; max-width:94%;
+      background: rgba(255,255,255,0.03);
+      border: 2px solid rgba(255,255,255,0.08);
+      border-radius:12px; padding:28px;
+      box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+      color: white;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    .login-card h1{ margin:0 0 6px; font-size:20px; }
+    .login-card p{ margin:0 0 18px; color: #aebfdb; }
+    .field{ display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+    .field input{ padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); color: white; outline:none; font-size:15px; }
+    .btn{ display:inline-block; padding:10px 14px; border-radius:8px; background: linear-gradient(90deg,#36a3ff,#7bd7ff); color:#021026; font-weight:700; cursor:pointer; border:none; }
+    .small{ font-size:13px; color:#9fb4d9; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <div class="login-card" role="main" aria-labelledby="signin-title">
+    <h1 id="signin-title">Welcome to CodSoft.Bot</h1>
+    <p>Sign in to continue to the chat.</p>
+
+    <div class="field">
+      <label for="name">Your name</label>
+      <input id="name" type="text" placeholder="e.g., Vishal" maxlength="40" />
+    </div>
+
+    <div class="field">
+      <label for="email">Email (optional)</label>
+      <input id="email" type="email" placeholder="you@example.com" />
+    </div>
+
+    <button id="btnLogin" class="btn">Sign in</button>
+    <div class="small">We only store your name in browser localStorage.</div>
+  </div>
+
+  <script src="/static/js/login.js"></script>
+</body>
+</html>

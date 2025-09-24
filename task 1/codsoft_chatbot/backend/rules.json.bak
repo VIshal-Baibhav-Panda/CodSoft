@@ -1,0 +1,48 @@
+{
+  "intents": [
+    {
+      "name": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening", "yo"],
+      "responses": ["Hey there! 👋 How can I help you today?", "Hello! What would you like to do?"]
+    },
+    {
+      "name": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "see ya", "take care"],
+      "responses": ["Goodbye! Have a great day 😊", "See you later!"]
+    },
+    {
+      "name": "set_name",
+      "patterns": ["my name is (.*)", "i am (.*)"],
+      "responses": ["Nice to meet you, {name}!", "Got it — I'll remember that you're {name}."]
+    },
+    {
+      "name": "ask_name",
+      "patterns": ["what is your name", "who are you", "your name", "who am i talking to"],
+      "responses": ["I'm CodSoftBot — the internship demo chatbot you built."]
+    },
+    {
+      "name": "project_help",
+      "patterns": ["help with project", "i need help", "how to build", "project idea", "internship"],
+      "responses": ["Tell me about your project goals and I can propose a plan or sample code.", "I can suggest steps, sample code, or a checklist — tell me which."]
+    },
+    {
+      "name": "thanks",
+      "patterns": ["thank you", "thanks", "thx"],
+      "responses": ["You're welcome!", "Anytime — happy to help!"]
+    },
+    {
+  "name": "submit_internship",
+  "patterns": ["how to submit internship", "submit internship", "internship submission"],
+  "responses": ["To submit, follow these steps: 1) Prepare the report 2) Zip files 3) Upload to the portal. Need exact steps?"]
+    }
+    {
+      "name": "fallback",
+      "patterns": [],
+      "responses": ["I didn't quite catch that. Could you try rephrasing?", "Hm, I don't know that yet — try asking differently or type 'help'."]
+    }
+  ],
+  "settings": {
+    "fuzzy_threshold": 0.6,
+    "log_file": "chat_transcript.log"
+  }
+}
