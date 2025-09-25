@@ -145,4 +145,13 @@ Professional UI (dark theme, responsive, modern look)
 
 Easy to extend (just add new intents in rules.json)
 
-📌Confidential
+📌 ---
+
+## 📜 License
+© 2025 Vishal Baibhav Panda.  
+All Rights Reserved.  
+This project is for demonstration purposes only as part of my CodSoft Internship.  
+No part of this code may be used, copied, modified, or distributed without permission.
+
+
+
