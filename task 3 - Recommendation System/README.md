@@ -1,4 +1,4 @@
-CODSOFT – Task 4: Movie Recommendation System (Web App)
+CODSOFT – Task: Movie Recommendation System (Web App)
 =======================================================
 
 This project is part of the CODSOFT Artificial Intelligence Internship.
