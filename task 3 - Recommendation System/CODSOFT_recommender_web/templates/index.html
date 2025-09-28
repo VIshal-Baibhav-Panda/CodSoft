@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CODSOFT — Movie Recommender</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- Decorative floating shapes -->
+    <div class="shapes">
+      <div class="shape circle c1"></div>
+      <div class="shape circle c2"></div>
+      <div class="shape blob b1"></div>
+      <div class="shape square s1"></div>
+      <div class="shape square s2"></div>
+    </div>
+
+    <main class="container">
+      <!-- Left hero / content column -->
+      <section class="hero">
+        <div class="hero-inner">
+          <h1>CODSOFT</h1>
+          <h2>Movie Recommender</h2>
+          <p class="lead">
+            Discover movies like the ones you already love. Type a movie name (partial allowed)—our content-based AI suggests similar films instantly using MovieLens.
+          </p>
+
+          <div class="popular">
+            <h3>Popular picks</h3>
+            <ul id="popular-list">
+              <!-- Filled by JS -->
+            </ul>
+          </div>
+
+          <p class="hint">Tip: try <strong>Inception</strong>, <strong>The Matrix</strong>, or <strong>Toy Story</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Right search card -->
+      <section class="card">
+        <h3 class="card-title">Find similar movies</h3>
+        <form id="form" class="search-form">
+          <input id="title" name="title" placeholder="e.g. Inception" autocomplete="off"/>
+          <select id="topn" name="topn">
+            <option value="5">5</option><option value="8" selected>8</option><option value="12">12</option>
+          </select>
+          <button type="submit">Recommend</button>
+        </form>
+
+        <div id="results" class="results">Search to see recommendations here.</div>
+
+        <small class="dataset">Dataset: MovieLens (ml-latest-small)</small>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>Made for CODSOFT • © <span id="year"></span> Vishal Baibhav Panda</div>
+    </footer>
+  </div>
+
+  <script>
+  // fill year
+  document.getElementById('year').innerText = new Date().getFullYear();
+
+  // fetch and show a few popular picks from dataset (server has movies.csv; we'll ask server for some titles)
+  async function loadPopular() {
+    try {
+      // try to load first 8 rows from dataset via a lightweight approach:
+      const res = await fetch('/static/popular_stub.json').catch(()=>null);
+      if (res && res.ok) {
+        const data = await res.json();
+        const ul = document.getElementById('popular-list');
+        data.slice(0,8).forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = t;
+          ul.appendChild(li);
+        });
+        return;
+      }
+    } catch(e){}
+    // fallback hardcoded picks
+    const fallback = ["Inception","The Matrix","Interstellar","The Dark Knight","Pulp Fiction","Toy Story","The Godfather","La La Land"];
+    const ul = document.getElementById('popular-list');
+    fallback.forEach(t => {
+      const li = document.createElement('li');
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+  }
+
+  loadPopular();
+
+  // existing recommend handler (same as before)
+  const form = document.getElementById('form');
+  const results = document.getElementById('results');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    results.innerHTML = 'Loading...';
+    const title = document.getElementById('title').value;
+    const topn = document.getElementById('topn').value;
+    const res = await fetch('/recommend', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({title, topn})
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(()=>({error:'Unknown error'}));
+      results.innerHTML = '<b style="color:#ffb4b4">Error:</b> '+(err.error||'Unknown');
+      return;
+    }
+    const json = await res.json();
+    if (!json.results.length) { results.innerHTML = '<i>No recommendations found.</i>'; return; }
+    results.innerHTML = '<ol>'+json.results.map(r => `<li><b>${r.title}</b> — <small>${r.genres}</small></li>`).join('')+'</ol>';
+  });
+  </script>
+</body>
+</html>
