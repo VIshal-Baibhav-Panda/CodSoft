@@ -1,0 +1,122 @@
+/* frontend/css/styles.css
+   Neon / dark theme, responsive, big hero + CTA with glow
+*/
+
+:root{
+  --bg-900: #05060a;
+  --panel: rgba(8,10,16,0.55);
+  --muted: #9aa8b8;
+  --neon-teal: #10f0d6;
+  --neon-blue: #3aa8ff;
+  --neon-purple: #b04bff;
+  --glass: rgba(255,255,255,0.03);
+  --glass-2: rgba(255,255,255,0.02);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Roboto,"Helvetica Neue",Arial}
+body{
+  background: var(--bg-900);
+  color: #e7f5ff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* floating canvas background */
+#floating-bg{
+  position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;
+  background: radial-gradient(1200px 600px at 15% 10%, rgba(16,240,214,0.03), transparent 8%),
+              radial-gradient(1000px 500px at 85% 90%, rgba(176,75,255,0.03), transparent 6%);
+}
+
+/* header */
+header.site-top{
+  position:fixed;left:0;right:0;top:0;z-index:50;padding:14px 34px;backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.site-top .brand{font-weight:700;color:#fff;letter-spacing:0.2px}
+.site-top nav{display:flex;gap:20px;align-items:center}
+.site-top nav a{color:rgba(255,255,255,0.75);text-decoration:none;padding:8px 10px;border-radius:8px;font-size:14px}
+.site-top nav a:hover{color:#fff;background:rgba(255,255,255,0.02)}
+.site-top .cta{
+  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
+  padding:8px 14px;border-radius:10px;color:#fff;font-weight:700;box-shadow:0 8px 28px rgba(58,168,255,0.12), 0 0 36px rgba(176,75,255,0.08);
+}
+
+/* container for page contents - keep above background */
+.container, .game-wrapper{
+  position:relative;z-index:10;margin:110px auto 60px;max-width:1100px;padding:28px;
+}
+
+/* hero */
+.hero{
+  display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 22px;border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+}
+.hero h1{
+  font-size:48px;line-height:1.02;margin-bottom:12px;color:white;text-shadow:0 6px 22px rgba(16,240,214,0.06);
+  letter-spacing:-0.8px;font-weight:800;
+}
+.hero p{max-width:760px;color:var(--muted);font-size:18px;margin-bottom:26px}
+.hero .hero-cta{
+  display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:14px;font-weight:800;
+  color:white;background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
+  box-shadow:0 12px 60px rgba(58,168,255,0.12), 0 0 48px rgba(176,75,255,0.10), inset 0 -2px 8px rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.05);cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.hero .hero-cta:active{transform:translateY(1px)}
+.hero .hero-cta:hover{box-shadow:0 18px 90px rgba(58,168,255,0.15), 0 0 64px rgba(176,75,255,0.12)}
+
+/* board styles (game page) */
+.board{
+  width:420px;max-width:86vw;margin:18px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  z-index:12;
+}
+.cell{
+  aspect-ratio:1/1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6), inset 0 -2px 8px rgba(255,255,255,0.01);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.cell:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(16,240,214,0.04)}
+.cell.played{cursor:default;opacity:0.98}
+.cell.win{box-shadow:0 20px 80px rgba(58,168,255,0.12);transform:translateY(-8px)}
+.cell .glyph{font-size:52px;line-height:1;text-shadow:0 12px 40px rgba(16,240,214,0.06);color:#fff}
+
+/* make the X and O glow slightly */
+.cell.x .glyph{color:#aee9ff;text-shadow:0 6px 26px rgba(58,168,255,0.22), 0 0 18px rgba(58,168,255,0.14)}
+.cell.o .glyph{color:#ffd0ff;text-shadow:0 6px 26px rgba(176,75,255,0.22), 0 0 20px rgba(176,75,255,0.14)}
+
+.status{text-align:center;margin-top:6px;color:var(--neon-teal);font-weight:700;padding:6px}
+
+/* controls */
+.controls{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.controls .btn{
+  padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);
+  color:#fff;cursor:pointer;font-weight:700;
+}
+.controls .btn.active{background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));box-shadow:0 12px 40px rgba(58,168,255,0.10)}
+
+/* small notes */
+.note{margin-top:14px;text-align:center;color:var(--muted)}
+
+/* footer */
+footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14px}
+
+/* responsiveness */
+@media (max-width:900px){
+  .hero h1{font-size:40px}
+  .board{width:360px}
+}
+@media (max-width:520px){
+  header.site-top{padding:10px 14px}
+  .hero{padding:26px}
+  .hero h1{font-size:28px}
+  .hero p{font-size:15px}
+  .board{width:260px;gap:10px}
+  .cell .glyph{font-size:38px}
+}

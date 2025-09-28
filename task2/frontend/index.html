@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vishal Baibhav Panda — CodSoft Internship</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="theme-color" content="#06060b" />
+</head>
+<body>
+  <!-- animated neon background (keeps the background.js behavior) -->
+  <div id="floating-bg"></div>
+
+  <!-- header kept minimal so nav remains available -->
+  <header class="site-top" role="banner">
+    <div class="brand">Vishal Baibhav Panda</div>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="game.html" class="cta">Play Tic-Tac-Toe</a>
+    </nav>
+  </header>
+
+  <!-- stripped down main content -->
+  <main class="container" role="main" style="display:flex;align-items:center;justify-content:center;min-height:70vh;">
+    <section class="hero" aria-label="Main hero" style="padding:48px 22px;max-width:920px;">
+      <div style="text-align:center">
+        <!-- Big centered name -->
+        <h1 style="font-size:64px;margin:0 0 10px;letter-spacing:-1px">Vishal Baibhav Panda</h1>
+
+        <!-- short internship note -->
+        <p style="color:var(--muted);font-size:16px;margin:0 0 22px;">
+          Tic-Tac-Toe AI — project for <strong>CodSoft Internship</strong>.
+        </p>
+
+        <!-- CTA kept exactly as before for the game link -->
+        <div style="display:flex;gap:16px;justify-content:center;margin-top:8px">
+          <a class="hero-cta" href="game.html" role="button">Open Tic-Tac-Toe Demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center;color:var(--muted);position:relative;z-index:10;padding-bottom:28px">
+    <small>Made for CodSoft Internship • <span id="year"></span></small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- keep the neon animated background script -->
+  <script src="js/background.js"></script>
+</body>
+</html>
