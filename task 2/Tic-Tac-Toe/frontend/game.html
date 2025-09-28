@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Play — Tic-Tac-Toe AI</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="page-body">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="topbar small">
+    <a href="index.html" class="nav-link back">← Back</a>
+    <div class="brand-title">Tic-Tac-Toe AI</div>
+    <div style="width:70px"></div>
+  </header>
+
+  <main class="game-main">
+    <section class="card game-card">
+      <div class="game-header">
+        <div class="role">You: <span id="humanSymbol">X</span></div>
+        <div id="status" class="status">Ready</div>
+      </div>
+
+      <div id="board" class="board" aria-label="Tic Tac Toe board">
+        <button class="cell" data-index="0"><span class="glyph"></span></button>
+        <button class="cell" data-index="1"><span class="glyph"></span></button>
+        <button class="cell" data-index="2"><span class="glyph"></span></button>
+        <button class="cell" data-index="3"><span class="glyph"></span></button>
+        <button class="cell" data-index="4"><span class="glyph"></span></button>
+        <button class="cell" data-index="5"><span class="glyph"></span></button>
+        <button class="cell" data-index="6"><span class="glyph"></span></button>
+        <button class="cell" data-index="7"><span class="glyph"></span></button>
+        <button class="cell" data-index="8"><span class="glyph"></span></button>
+      </div>
+
+      <div class="controls">
+        <button id="switchSide" class="btn btn-primary small">Switch Side</button>
+        <button id="restartBtn" class="btn btn-outline small">Restart</button>
+        <button id="aiVsAi" class="btn btn-outline small">AI vs AI</button>
+        <button id="aiLocalToggle" class="btn btn-ghost small">Force local AI</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Made by Vishal • CodSoft Internship</footer>
+
+  <script src="js/background.js"></script>
+  <script src="js/minimax_fallback.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
